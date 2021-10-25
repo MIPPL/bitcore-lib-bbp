@@ -15,7 +15,7 @@ var Signature = bitcore.crypto.Signature;
 
 describe('PublicKeyHashInput', function() {
 
-  var privateKey = new PrivateKey('7QrPdrWFBxePdJcV9vpyZAikkSvx4zHPAA1nNwHNut5381bEPAi');
+  var privateKey = new PrivateKey('Ty4KmDFz3zMo6aciHj2iTR3urreFYqPmLSBHFjUSJ6dQpxsxWqWK');
   var publicKey = privateKey.publicKey;
   var address = new Address(publicKey, Networks.livenet);
 

@@ -58,7 +58,7 @@ describe('PublicKey', function() {
 
       var knownKeys = [
         {
-          wif: 'VJGzufW5dNc2sEjdGQakcyuJ6mT84bqJoQnTHpbHiQQpMwgrnY3a',
+          wif: 'Ty4KmDFz3zMo6aciHj2iTR3urreFYqPmLSBHFjUSJ6dQpxsxWqWK',
           priv: '4B65E37D750454B0B05942A05983FD36D57CE20AFAD5F4CEDAE4BCCBF5D48F6E',
           pub: '0330812D7DB74CA325312E4366D68F27D165DF51FF70CFBB02661723157F3A8E8A',
           pubx: 'd6106302d2698d6a41e9c9a114269e7be7c6a0081317de444bb2980bf9265a01',
@@ -346,7 +346,7 @@ describe('PublicKey', function() {
     // wif private key, address
     // see: https://github.com/bitcoin/bitcoin/blob/master/src/test/key_tests.cpp#L20
     var data = [
-      ['7QrPdrWFBxePdJcV9vpyZAikkSvx4zHPAA1nNwHNut5381bEPAi', 'SgcKGWqj9cCTeerKroJVGGyvwssUKYiSrB'],
+      ['Ty4KmDFz3zMo6aciHj2iTR3urreFYqPmLSBHFjUSJ6dQpxsxWqWK', 'B4iiEedNqktxNkH77XseuG7Uw1Bqp3FBHL'],
     ];
     
     data.forEach(function(d){

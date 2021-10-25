@@ -8,15 +8,15 @@ var PrivateKey = bitcore.PrivateKey;
 describe('PublicKeyInput', function() {
 
   var utxo = {
-    txid: '597b7da8048da900223beab09d914914b4e6de2775be4b575da80a2f9bd17686',
+    txid: 'fc9261b9c7fb93909f70358a334ea626c4f125ada65893186b6b192d5d7fa1e8',
     vout: 0,
-    address: 'SQsrMpzRq5yhj6Gbjw7gWAbUBS3ztn68z1',
-    scriptPubKey: '76a914274f47ce32ce0a16493720bb07e110e7fbc4dd2488ac',
+    address: 'B4iiEedNqktxNkH77XseuG7Uw1Bqp3FBHL',
+    scriptPubKey: '76a91402f4ced1e1d893ee3eb384ef9ec62f076343375688ac',
     amount: 651.51137473,
     confirmations: 104,
     spendable: true
   };
-  var privateKey = PrivateKey.fromWIF('VMg5hP9b6HTbQ8D4PeukRYpwHi6gs7LMkzTr7QGtUxtvHHhUQN9S');
+  var privateKey = PrivateKey.fromWIF('Ty4KmDFz3zMo6aciHj2iTR3urreFYqPmLSBHFjUSJ6dQpxsxWqWK');
   var address = privateKey.toAddress();
   utxo.address.should.equal(address.toString());
 
