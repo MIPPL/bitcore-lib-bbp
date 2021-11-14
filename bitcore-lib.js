@@ -16401,7 +16401,7 @@ Output.prototype.toBufferWriter = function(writer) {
   // Biblepay message
   var message = this._message || '';
   writer.writeVarintNum(message.length);
-  writer.write(message);
+  writer.write(Buffer.from(message, 'utf8'));
 
   return writer;
 };
