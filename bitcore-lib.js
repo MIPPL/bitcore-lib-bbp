@@ -16398,10 +16398,10 @@ Output.prototype.toBufferWriter = function(writer) {
   writer.writeVarintNum(script.length);
   writer.write(script);
   // Biblepay message
-  var message = this._message;
+  var message = this._message || '';
   writer.writeVarintNum(message.length);
   writer.write(message);
-  
+
   return writer;
 };
 
@@ -16856,7 +16856,7 @@ function Transaction(serialized, opts) {
     this._newTransaction();
   }
 }
-var CURRENT_VERSION = 1;
+var CURRENT_VERSION = 2;
 var DEFAULT_NLOCKTIME = 0;
 var MAX_BLOCK_SIZE = 1000000;
 
@@ -17616,9 +17616,10 @@ Transaction.prototype.getChangeOutput = function() {
  *
  * @param {(string|Address|Array.<Transaction~toObject>)} address
  * @param {number} amount in satoshis
+ * @param {string} message
  * @return {Transaction} this, for chaining
  */
-Transaction.prototype.to = function(address, amount) {
+Transaction.prototype.to = function(address, amount, message) {
   if (_.isArray(address)) {
     var self = this;
     _.each(address, function(to) {
@@ -17631,9 +17632,12 @@ Transaction.prototype.to = function(address, amount) {
     JSUtil.isNaturalNumber(amount),
     'Amount is expected to be a positive integer'
   );
+
+  var strMessage = message || '';
   this.addOutput(new Output({
     script: Script(new Address(address)),
-    satoshis: amount
+    satoshis: amount,
+    message: strMessage
   }));
   return this;
 };
@@ -17651,21 +17655,8 @@ Transaction.prototype.to = function(address, amount) {
 Transaction.prototype.addData = function(value) {
   this.addOutput(new Output({
     script: Script.buildDataOut(value),
-    satoshis: 0
-  }));
-  return this;
-};
-
-/**
- * Add info  BURN_DATA to the transaction.
- * @param {Buffer|string} value:  the data to be stored in the OP_RETURN output.
- *    In case of a string, the UTF-8 representation will be stored
- * @return {Transaction} this, for chaining
- */
-Transaction.prototype.addBurnData = function(to, value, amount) {
-  this.addOutput(new Output({
-    script: Script.buildBurnDataOut(to, value),
-    satoshis: amount
+    satoshis: 0,
+    message: ''
   }));
   return this;
 };
