@@ -16319,7 +16319,8 @@ Output.prototype.invalidSatoshis = function() {
 
 Output.prototype.toObject = Output.prototype.toJSON = function toObject() {
   var obj = {
-    satoshis: this.satoshis
+    satoshis: this.satoshis,
+    message: this.message
   };
   obj.script = this._scriptBuffer.toString('hex');
   return obj;
@@ -17758,7 +17759,8 @@ Transaction.prototype._updateChangeOutput = function() {
     this._changeIndex = this.outputs.length;
     this._addOutput(new Output({
       script: this._changeScript,
-      satoshis: changeAmount
+      satoshis: changeAmount,
+      message: ''
     }));
   } else {
     this._changeIndex = undefined;
